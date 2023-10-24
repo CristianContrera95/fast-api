@@ -1,0 +1,25 @@
+DELETE FROM edge_device;
+DELETE FROM account;
+DELETE FROM role;
+DELETE FROM cloud_credential;
+DELETE FROM cloud_service;
+DELETE FROM organization;
+
+INSERT INTO edge_device (id, type, ip, port, status, sw_version) VALUES (N'5fa14853a49b281e76783781', N'Jetson Nano', N'172.16.1.16', N'8000', N'Active', N'Jetpack 4.4');
+INSERT INTO edge_device (id, type, ip, port, status, sw_version) VALUES (N'5fa16bfba49b281e7678378e', N'Jetson Nano', N'172.16.1.4', N'8000', N'Active', N'Jetpack 4.4');
+SET IDENTITY_INSERT role ON;
+INSERT INTO role (id, name) VALUES (1, N'Role 1');
+INSERT INTO role (id, name) VALUES (2, N'Role 2');
+SET IDENTITY_INSERT role OFF;
+SET IDENTITY_INSERT organization ON;
+INSERT INTO organization (id, company_id, name, description, location) VALUES (1, null, N'Security', N'Mineria', null);
+SET IDENTITY_INSERT organization OFF;
+INSERT INTO account (id, role_id, username, email, password, job_title, last_update, organization_id) VALUES (N'63DF72DB-6C9A-4686-AD4F-0084319596FD', 1, N'marvik', N'hello@marvik.ai', N'$2b$12$A2RMViKN9r72bGuiwpWpxeANGI8MtXRlKwrmbKlAgNXkgEgDOQs8y', N'engineer', N'2020-10-21 19:15:59.147', 1);
+INSERT INTO account (id, role_id, username, email, password, job_title, last_update, organization_id) VALUES (N'D18CB2F2-9D03-4169-AC4D-0D9DB20E3D32', 1, N'test_user', N'test@test.ai', N'$2b$12$A2RMViKN9r72bGuiwpWpxeANGI8MtXRlKwrmbKlAgNXkgEgDOQs8y', N'engineer', N'2020-10-21 19:15:59.147', 1);
+SET IDENTITY_INSERT cloud_service ON;
+INSERT INTO cloud_service (id, organization_id, cloud_name, resource_name, type, url_endpoint) VALUES (3, 1, N'Azure', N'folpixeusstorage', N'storage', null);
+SET IDENTITY_INSERT cloud_service OFF;
+SET IDENTITY_INSERT cloud_credential ON;
+INSERT INTO cloud_credential (id, cloud_service_id, [key], value) VALUES (1, 3, N'AZURE_KEY_STORAGE_ACCOUNT_KEY', N'/zP7Z7wg79V7ajBINcKfumBm3C9tE0zdF5qZv6vHEXQqLhmjZEm/rxG52uC1CDISY42oTCPG9vPBayBi8IdOfA==');
+INSERT INTO cloud_credential (id, cloud_service_id, [key], value) VALUES (2, 3, N'CONTAINER_ALERT_NAME', N'folpix-alerts');
+SET IDENTITY_INSERT cloud_credential OFF;

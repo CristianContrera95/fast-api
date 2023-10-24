@@ -1,0 +1,20 @@
+# docker-compose.yml
+version: "3.3"
+services:
+  test_sqlserver:
+    image: mcr.microsoft.com/mssql/server:2017-CU8-ubuntu
+    restart: always
+    container_name: test_sqlserver
+    ports:
+      - 1433:1433
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=$SQL_PASS
+      - DATABASE_NAME=$SQL_DATABASE
+
+  test_mongodb:
+    image: mongo:latest
+    restart: always
+    container_name: test_mongodb
+    ports:
+      - 27017:27017

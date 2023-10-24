@@ -1,0 +1,27 @@
+name: deploy-stage
+on:
+  push:
+    branches: [ staging ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-18.04
+    steps:
+    # checkout the repo
+    - name: 'Checkout GitHub Action'
+      uses: actions/checkout@master
+
+    - name: 'Login via Azure CLI'
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.STAGE_AZURE_CREDENTIALS }}
+
+    - name: 'Build and push image'
+      uses: azure/docker-login@v1
+      with:
+        login-server: ${{ secrets.STAGE_REGISTRY_LOGIN_SERVER }}
+        username: ${{ secrets.STAGE_REGISTRY_USERNAME }}
+        password: ${{ secrets.STAGE_REGISTRY_PASSWORD }}
+    - run: |
+        docker build . -t ${{ secrets.STAGE_REGISTRY_LOGIN_SERVER }}/folpix-api:latest
+        docker push ${{ secrets.STAGE_REGISTRY_LOGIN_SERVER }}/folpix-api:latest

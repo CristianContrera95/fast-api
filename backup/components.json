@@ -1,0 +1,109 @@
+[
+  {
+    "_id": {
+      "$oid": "5fa96e4e65b2d94aa5a4faba"
+    },
+    "name": "events_pie_chart",
+    "type": "pie_chart",
+    "use_case": "driver_safety",
+    "default_settings": {
+      "title": "Eventos del día",
+      "description": "Gráfico de proporción de alertas por categoría"
+    },
+    "default_filters": {
+      "init_date": -84600,
+      "end_date": 0
+    }
+  },
+  {
+    "_id": {
+      "$oid": "5fa96ff3d751fa0a9160696e"
+    },
+    "name": "events_bar_chart",
+    "type": "piled_up_bar_chart",
+    "use_case": "driver_safety",
+    "default_settings": {
+      "title": "Eventos del día",
+      "description": "Grafico de barras donde se indica la cantidad de alertas, por categoria, y por intervalo de tiempo."
+    },
+    "default_filters": {
+      "init_date": -84600,
+      "end_date": 0,
+      "time_interval": {
+        "unit": "hour",
+        "size": 2
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "5fb3f5766deb20cfe0839b26"
+    },
+    "name": "hour_band_chart_month",
+    "use_case": "driver_safety",
+    "type": "hour_band_chart",
+    "default_settings": {
+      "title": "Eventos del mes, por banda horaria",
+      "description": "Eventos del mes, por banda horaria"
+    },
+    "default_filters": {
+      "init_date": -2538000,
+      "end_date": 0,
+      "hour_bands": [
+        1,
+        6,
+        12,
+        20
+      ],
+      "band_tags": [
+        "Mañana",
+        "Tarde",
+        "Noche",
+        "Trasnoche"
+      ]
+    }
+  },
+  {
+    "_id": {
+      "$oid": "5fb67fa8d21de82ddcc47bc4"
+    },
+    "name": "alerts_list",
+    "type": "recent_alerts_list",
+    "default_settings": {
+      "title": "Ultimas alertas",
+      "description": "Las ultimas 6 alertas que hubo sobre el caso de uso driver safety"
+    },
+    "use_case": "driver_safety",
+    "default_filters": {
+      "limit": 6
+    }
+  },
+  {
+    "_id": {
+      "$oid": "5fb6ae792e7fd49e8cae008b"
+    },
+    "name": "alerts_by_priority",
+    "type": "priorities_radial_bar_chart",
+    "default_settings": {
+      "title": "Alertas por categoría",
+      "description": "Gráfico de proporción de alertas por nivel prioridad."
+    },
+    "default_filters": {
+      "init_date": -592200,
+      "end_date": 0
+    },
+    "use_case": "driver_safety"
+  },
+  {
+    "_id": {
+      "$oid": "5fbd13200cc09052407abea2"
+    },
+    "name": "key_metrics",
+    "type": "key_metrics",
+    "default_settings": {
+      "title": "Metricas generales",
+      "description": "Cantidad de camiones, alertas, y otra informacion relevante"
+    },
+    "use_case": "driver_safety"
+  }
+]

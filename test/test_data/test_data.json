@@ -1,0 +1,6 @@
+{
+  "edge_devices": [
+    { "_id" : "5fa14853a49b281e76783781", "settings" : { "fps" : 3, "max_restarts" : 5 }},
+    { "_id" : "5fa16bfba49b281e7678378e", "settings" : { "fps" : 5, "max_restarts" : 3 }}
+  ]
+}
